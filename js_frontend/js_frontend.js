@@ -4,21 +4,41 @@ export function process_all_teams(func) {
 		return response.json();
 	})
 	.then((result) => {
+		console.log(result);
 		return getTeams(result);
 	})
 	.then((results) => {
-		func(results);
-		js_avg_goals(results);
-	})
-	.catch(() => console.log("there was an error"))
+		console.log(results);
+		let con = results.map(r => new Team(r));
+		console.log(con);
+		func(con);
+    })
+	.catch((error) => console.log(error))
 }
 
 export function js_avg_goals(results) {
+	let highestavg = 0;
+	let winner = '';
 	console.log(results);
-	for(i of results){
-		console.log(i);
+
+	for(let i in results){
+		let sum = 0;
+		for(let j = 0; j < 6; j++){
+			sum += parseInt(results[i].players[j].charAt(45));
+		}
+		for(let j = 6; j < 12; j++){
+			sum += parseInt(results[i].players[j].charAt(46));
+		}
+		for(let j = 12; j < 15; j++){
+			sum += parseInt(results[i].players[j].charAt(45));
+		}
+		let avg = sum / 15;
+		if(avg > highestavg){
+			highestavg = avg;
+			winner = results[i].name;
+		}
 	}
-	console.log(results);
+	console.log('Highest average goals: ' + highestavg + ' Team: ' + winner);
 }
 
 function Team(res){
@@ -33,14 +53,6 @@ function getTeams(result){
 		promises[i] = fetch(url).then((response) => {return response.json()});
 	}
 
-	let teams  = Array(12);
-	Promise.all(promises)
-	.then((res) => {
-		for(let i=0; i < res.length; i++){
-			teams[i] = new Team(res[i]);
-		}
-	})
-	.catch(() => console.log("There was an error in getTeams"))
-
-	return teams;
+	return Promise.all(promises)
+    .catch((error) => console.log(error))
 }

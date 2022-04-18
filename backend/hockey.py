@@ -38,13 +38,13 @@ def generate_players(team_name):
 		stats[t].append(team_name)
 		random.seed(t)
 		for i in range(6):
-			stats[t].append(Player(randStr(), 'D', random.randint(1, 10), random.randint(1, 10)).toJson())
+			stats[t].append(Player(randStr(), 'D', random.randint(1, 9), random.randint(1, 10)).toJson())
 		for i in range(3):
-			stats[t].append(Player(randStr(), 'LW', random.randint(1, 10), random.randint(1, 10)).toJson())
+			stats[t].append(Player(randStr(), 'LW', random.randint(1, 9), random.randint(1, 10)).toJson())
 		for i in range(3):
-			stats[t].append(Player(randStr(), 'RW', random.randint(1, 10), random.randint(1, 10)).toJson())
+			stats[t].append(Player(randStr(), 'RW', random.randint(1, 9), random.randint(1, 10)).toJson())
 		for i in range(3):
-			stats[t].append(Player(randStr(), 'C', random.randint(1, 10), random.randint(1, 10)).toJson())
+			stats[t].append(Player(randStr(), 'C', random.randint(1, 9), random.randint(1, 10)).toJson())
 	return json.dumps(stats[team_name])
 		
 
