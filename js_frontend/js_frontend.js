@@ -4,12 +4,13 @@ export function process_all_teams(func) {
 		return response.json();
 	})
 	.then((result) => {
-		console.log(result);
+		//console.log(result);
 		return getTeams(result);
 	})
 	.then((results) => {
-		console.log(results);
+		//console.log(results);
 		let con = results.map(r => new Team(r));
+		//console.log(con);
 		console.log(con);
 		func(con);
     })
@@ -19,7 +20,6 @@ export function process_all_teams(func) {
 export function js_avg_goals(results) {
 	let highestavg = 0;
 	let winner = '';
-	console.log(results);
 
 	for(let i in results){
 		let sum = 0;
