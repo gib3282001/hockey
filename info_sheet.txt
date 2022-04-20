@@ -35,10 +35,11 @@ Cargo.toml
 Makefile
 
 
-Does your project run without error?: Yes
+Does your project run without error?: No
 
 If not, what is/are the error(s) and which parts of your program run
-correctly?:
+correctly?: Everything runs correctly except that every once in a while, lib.rs will give a runtime error. If this happens just refresh
+the page and it'll give you the correct output.
 
 
 
@@ -46,7 +47,8 @@ correctly?:
 
 
 
-Additional comments to the grader:
+Additional comments to the grader: If the console logs anything that isn't seagulls and 6.4, refresh the page but it will produce the correct output
+the vast majority of the time.
 
 
 
