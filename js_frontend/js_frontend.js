@@ -4,14 +4,10 @@ export function process_all_teams(func) {
 		return response.json();
 	})
 	.then((result) => {
-		//console.log(result);
 		return getTeams(result);
 	})
 	.then((results) => {
-		//console.log(results);
 		let con = results.map(r => new Team(r));
-		//console.log(con);
-		console.log(con);
 		func(con);
     })
 	.catch((error) => console.log(error))

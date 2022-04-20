@@ -3,14 +3,6 @@ mod utils;
 use wasm_bindgen::prelude::*;
 use serde::{Serialize, Deserialize};
 
-// #[derive(Serialize, Deserialize)]
-// pub struct Player {
-// 	name: String,
-// 	position: String,
-// 	goals: u32,
-// 	asists: u32,
-// }
-
 #[derive(Serialize, Deserialize)]
 pub struct Team {
 	name: String,
@@ -24,23 +16,23 @@ pub fn wasm_avg_goals(results: &JsValue) {
 			let mut highestAvg: f32 = 0.0;
 			let mut highestTeam = "aa";
 			for t in teams.iter() {
-				let mut sum = 0;
+				let mut sum: f32 = 0.0;
 				for i in 0..6 {
 					let ch = t.players[i].chars().nth(45).unwrap().to_string();
-					let num: u32 = ch.parse().unwrap();
+					let num: f32 = ch.parse().unwrap();
 					sum += num;
 				}
 				for i in 6..12 {
 					let ch = t.players[i].chars().nth(46).unwrap().to_string();
-					let num: u32 = ch.parse().unwrap();
+					let num: f32 = ch.parse().unwrap();
 					sum += num;
 				}
 				for i in 12..15 {
 					let ch = t.players[i].chars().nth(45).unwrap().to_string();
-					let num: u32 = ch.parse().unwrap();
+					let num: f32 = ch.parse().unwrap();
 					sum += num;
 				}
-				let avg: f32 = (sum / 15) as f32;
+				let avg: f32 = (sum / 15.0);
 				if avg > highestAvg {
 					highestAvg = avg;
 					highestTeam = &t.name;

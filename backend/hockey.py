@@ -35,7 +35,7 @@ def get_teams():
 def generate_players(team_name):
 	for t in teams:
 		stats[t] = []
-		stats[t].append(team_name)
+		stats[t].append(t)
 		random.seed(t)
 		for i in range(6):
 			stats[t].append(Player(randStr(), 'D', random.randint(1, 9), random.randint(1, 10)).toJson())
