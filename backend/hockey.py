@@ -34,6 +34,9 @@ def get_teams():
 @app.route("/teams/<team_name>", methods=['GET'])
 def generate_players(team_name):
 	for t in teams:
+		if team_name not in teams:
+			abort(404)
+
 		stats[t] = []
 		stats[t].append(t)
 		random.seed(t)
