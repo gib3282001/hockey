@@ -1,7 +1,6 @@
 # CS1520 Project 4
 
 ## High-level description:
-You will be building the following:
 
 * A backend server to generate basic player stats for a fictionaly hockey
 	league.
@@ -11,4 +10,5 @@ You will be building the following:
 
 * A Rust data processing function to do the same thing that can be compiled
 	to WebAssembly.
+	
 *Some skelleton code was provided by my professor
